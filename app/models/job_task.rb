@@ -1,4 +1,4 @@
 class JobTask < ApplicationRecord
-  belongs_to :Technician
-  belongs_to :Home
+  belongs_to :technician
+  belongs_to :home
 end
