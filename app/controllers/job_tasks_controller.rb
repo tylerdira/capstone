@@ -1,4 +1,11 @@
 class JobTasksController < ApplicationController
+    
+    def index
+        render json: JobTask.all
+    end
+    
+
+    ##Not working?
     def create
         jobtask = JobTask.create!(jobtask_params)
         render json: jobtask

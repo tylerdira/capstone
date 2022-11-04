@@ -1,4 +1,9 @@
 class CompaniesController < ApplicationController
+    
+    def index
+        render json: Company.all
+    end
+    
     def create
         company = Company.create!(company_params)
         render json: company
