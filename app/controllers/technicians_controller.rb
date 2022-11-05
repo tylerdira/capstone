@@ -4,19 +4,19 @@ class TechniciansController < ApplicationController
     end
 
     def show
-        technician = Technician.find(params[:id])
+        technician = Technician.find(technician_params[:id])
         render json: technician
     end
     
 
     ##Not working?
     def create
-        technician = Technician.create!(params)
+        technician = Technician.create!(technician_params)
         render json: technician
     end
 
     def destroy
-        technician = Technician.find(params[:id])
+        technician = Technician.find(technician_params[:id])
         technician.destroy
         head :no_content
     end

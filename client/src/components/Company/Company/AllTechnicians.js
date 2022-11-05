@@ -1,23 +1,21 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import Technician from "./Technician";
+import NewTechnicianForm from "./NewTechnicianForm";
 
-function AllTechnicians() {
+function AllTechnicians({technicians, newTechnician, allCompanies}) {
 
-  const [technicians, setTechnicians] = useState([])
-
-
-  useEffect(() => {
-    fetch('/technicians')
-    .then(r => r.json())
-    .then(data => setTechnicians(data))
-  }, [])
+  const [showForm, setShowForm] = useState(false)
   
-  
-
+  function formControl(e) {
+    e.preventDefault();
+    setShowForm(!showForm);
+  }
 
     return (
       <div>
-        {technicians.map(tech => <Technician key={tech.id}/>)}
+        <button onClick={formControl}>New Technician</button>
+        {showForm ? <NewTechnicianForm allCompanies={allCompanies} newTechnician={newTechnician} /> : null}
+        {technicians.map(tech => <Technician key={tech.id} tech={tech}/>)}
       </div>
     );
   }
