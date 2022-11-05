@@ -50,7 +50,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/technicians">
-            <AllTechnicians allCompanies={allCompanies} newTechnician={newTechnician} technicians={technicians}/>
+            <AllTechnicians setTechnicians={setTechnicians} allCompanies={allCompanies} newTechnician={newTechnician} technicians={technicians}/>
           </Route>
           <Route exact path="/assignedjbos">
             <AssignedJobs />

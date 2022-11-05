@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import Technician from "./Technician";
 import NewTechnicianForm from "./NewTechnicianForm";
 
-function AllTechnicians({technicians, newTechnician, allCompanies}) {
+function AllTechnicians({technicians, newTechnician, allCompanies, setTechnicians}) {
 
   const [showForm, setShowForm] = useState(false)
   
@@ -14,8 +14,8 @@ function AllTechnicians({technicians, newTechnician, allCompanies}) {
     return (
       <div>
         <button onClick={formControl}>New Technician</button>
-        {showForm ? <NewTechnicianForm allCompanies={allCompanies} newTechnician={newTechnician} /> : null}
-        {technicians.map(tech => <Technician key={tech.id} tech={tech}/>)}
+        {showForm ? <NewTechnicianForm  allCompanies={allCompanies} newTechnician={newTechnician} /> : null}
+        {technicians.map(tech => <Technician technicians={technicians} setTechnicians={setTechnicians} key={tech.id} tech={tech}/>)}
       </div>
     );
   }

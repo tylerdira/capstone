@@ -4,7 +4,7 @@ class TechniciansController < ApplicationController
     end
 
     def show
-        technician = Technician.find(technician_params[:id])
+        technician = Technician.find(params[:id])
         render json: technician
     end
     

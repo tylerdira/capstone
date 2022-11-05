@@ -1,12 +1,11 @@
 import React, {useState} from "react";
 import TechnicianCard from "./TechnicianCard";
 
-function Technician({tech}) {
+function Technician({tech, setTechnicians, technicians}) {
 
   const [moreInfo, setMoreInfo] = useState(false)
 
-  function toggleMoreInfo(e) {
-    e.preventDefault();
+  function toggleMoreInfo() {
     setMoreInfo(!moreInfo);
 
   }
@@ -17,7 +16,7 @@ function Technician({tech}) {
         <h5>{tech.profession}</h5>
         <button>Assign to Job</button>
         <button onClick={toggleMoreInfo}>More info</button>
-        {moreInfo ? <TechnicianCard /> : null}
+        {moreInfo ? <TechnicianCard setTechnicians={setTechnicians} technicians={technicians} tech={tech}/> : null}
       </div>
     );
   }
