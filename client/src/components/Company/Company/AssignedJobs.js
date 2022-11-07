@@ -1,7 +1,14 @@
-function AssignedJobs() {
+import JobCard from "./JobCard";
+
+function AssignedJobs({allJobs}) {
 
     return (
-      <div>Assigned Jobs</div>
+      <div>
+        <h2>Assigned Jobs</h2>
+        <div>
+          {allJobs.map((job) => <JobCard job={job}/>) }
+        </div>
+      </div>
     );
   }
   
