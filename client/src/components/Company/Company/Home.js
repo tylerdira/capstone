@@ -1,11 +1,11 @@
 import NewJobForm from "./NewJobForm";
 
-function Home({allHomes, technicians, newJob}) {
+function Home({allHomes, technicians, newJob, user}) {
 
     return (
       <div>
         <h1>Home</h1>
-        <NewJobForm newJob={newJob} technicians={technicians} allHomes={allHomes}/>
+        <NewJobForm user={user} technicians={technicians} newJob={newJob} allHomes={allHomes}/>
       </div>
     );
   }

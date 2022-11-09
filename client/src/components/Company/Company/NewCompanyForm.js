@@ -1,6 +1,7 @@
 import React, {useState} from "react";
+import NewTechnicianForm from "./NewTechnicianForm";
 
-function NewCompanyForm({newCompany}) {
+function NewCompanyForm({newCompany, newTechnician}) {
 
     const [name, setName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
@@ -29,6 +30,20 @@ function NewCompanyForm({newCompany}) {
         setEmail("");
         setPassword("");
       })
+    //   .then(
+    //     fetch('/technicians', {
+    //         method: 'POST',
+    //         headers: { "Content-type": "application/json"},
+    //         body: JSON.stringify({
+    //             name: 'NOT ASSIGNED',
+    //             company_id: numOfCompanies
+    //         })
+    //     })
+    //     .then(r => r.json())
+    //     .then(aNewTechnician => {
+    //         newTechnician(aNewTechnician)
+    //     })
+    //   )
       }
 
     return (

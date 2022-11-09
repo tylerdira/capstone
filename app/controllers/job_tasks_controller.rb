@@ -1,16 +1,31 @@
 class JobTasksController < ApplicationController
+    skip_before_action :authorized
     
     def index
         render json: JobTask.all
     end
+
+    def show
+        jobtask = JobTask.find(params[:id])
+        render json: jobtask
+    end
     
 
-    ##Not working?
     def create
         jobtask = JobTask.create!(jobtask_params)
         render json: jobtask, status: :created
     end
 
+    def destroy
+        jobtask = JobTask.find(params[:id])
+        jobtask.destroy
+        head :no_content
+    end
+
+    # def myJobs
+    #     allJobs = JobTask.all
+    #     myJobs = JobTask.find()
+    # end
 
     private 
 

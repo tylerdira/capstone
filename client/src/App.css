@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.job-card {
+  border: 3px solid red;
+  height: 200px;
+  width: 200px;
+
+}

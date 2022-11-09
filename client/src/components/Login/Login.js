@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import NewCompanyForm from "../Company/Company/NewCompanyForm";
+import {useHistory} from 'react-router-dom'
 
-function Login({updateUser, newCompany}) {
+function Login({updateUser, newCompany, newTechnician}) {
 
     const [showForm, setShowForm] = useState(false)
     const [formData, setFormData] = useState({
@@ -9,6 +10,8 @@ function Login({updateUser, newCompany}) {
         password:''
     })
     const [errors, setErrors] = useState([])
+    const history = useHistory()
+
     const {email, password} = formData
 
     function handleSubmit(e) {
@@ -17,7 +20,7 @@ function Login({updateUser, newCompany}) {
             email,
             password
         }
-        fetch('/login',{
+        fetch('/login', {
             method:'POST',
             headers:{'Content-Type': 'application/json'},
             body:JSON.stringify(company)
@@ -26,10 +29,11 @@ function Login({updateUser, newCompany}) {
               if(res.ok){
                   res.json().then(company => {
                       updateUser(company)
+                      history.push(`/`)
                   })
               }else {
                   res.json().then(json => setErrors(json.errors))
-                  {console.log(errors)}
+                //   {console.log(errors)}
               }
           })
     }
@@ -55,7 +59,7 @@ function Login({updateUser, newCompany}) {
             <button type='submit'>Login</button>
         </form>
         <button onClick={formToggle}>Sign Up</button>
-        {showForm ? <NewCompanyForm newCompany={newCompany}/> : null}
+        {showForm ? <NewCompanyForm newTechnician={newTechnician} newCompany={newCompany}/> : null}
         {errors ? <div>{errors}</div>:null}
       </div>
     );

@@ -1,4 +1,6 @@
 class TechniciansController < ApplicationController
+    skip_before_action :authorized
+    
     def index
         render json: Technician.all
     end
@@ -16,7 +18,7 @@ class TechniciansController < ApplicationController
     end
 
     def destroy
-        technician = Technician.find(technician_params[:id])
+        technician = Technician.find(params[:id])
         technician.destroy
         head :no_content
     end

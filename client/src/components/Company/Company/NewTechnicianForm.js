@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function NewTechnicianForm({newTechnician, allCompanies}) {
+function NewTechnicianForm({newTechnician, allCompanies, user}) {
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -22,7 +22,7 @@ function NewTechnicianForm({newTechnician, allCompanies}) {
         profession,
         role: "Technician",
 //Configure compnay_id to be the ID of the logged in compnay
-        company_id: 1
+        company_id: user.id
     }),
   })
   .then(r => r.json())

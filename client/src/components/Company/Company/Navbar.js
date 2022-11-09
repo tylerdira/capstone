@@ -1,15 +1,17 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
+import {NavLink } from "react-router-dom";
 
-function Navbar() {
+function Navbar({handleLogout}) {
+
 
     return (
       <div>
         <NavLink to="/" exact > Home </NavLink>
         <NavLink to="/technicians" exact > Technicians </NavLink>
-        <NavLink to="/assignedjbos" exact > Assigned Jobs </NavLink>
+        <NavLink to="/assignedjobs" exact > Assigned Jobs </NavLink>
         <NavLink to="/unassignedjobs" exact > Unassigned Jobs </NavLink>
+        {/* <NavLink to='/login' exact> <p>Log In</p> </NavLink> */}
+        <button onClick={handleLogout}> Log out</button>
       </div>
     );
   }

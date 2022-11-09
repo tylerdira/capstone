@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 
-function NewJobForm({allHomes, technicians, newJob}) {
+function NewJobForm({allHomes, technicians, newJob, user}) {
 
   const [address, setAddress] = useState("");
   const [status, setStatus] = useState("");
@@ -48,6 +48,7 @@ function NewJobForm({allHomes, technicians, newJob}) {
     })
   }
 
+  const yourTechnicians = technicians.filter(tech => tech.company.id === user.id)
 
     return (
       <div>
@@ -71,7 +72,7 @@ function NewJobForm({allHomes, technicians, newJob}) {
             <label>Technician</label>
                 <select onChange={handleTechnicianChange}>
                   <option selected></option>
-                  {technicians.map(tech => <option key={tech.id} value={tech.id}>{tech.first_name} {tech.last_name}</option>)}
+                  {yourTechnicians.map(tech => <option key={tech.id} value={tech.id}>{tech.first_name} {tech.last_name}</option>)}
                 </select>
             <button type="submit">Create Job</button>
             

@@ -18,7 +18,10 @@ class ApplicationController < ActionController::API
     end
 
     def authorized
-        return render json:{error: "Not authorized"}, status: :unauthorized unless session.include? :company_id
+        @current_user = Company.find_by(id: session[:company_id])
+        render json: {errors: ["Not authorized"]}, status: :unauthorized unless @current_user
+        
+        # return render json:{error: "Not authorized"}, status: :unauthorized unless session.include? :company_id
     end
 
     # def authorize

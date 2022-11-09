@@ -6,6 +6,8 @@ import UnassignedJobs from "./components/Company/Company/UnassignedJobs";
 import Navbar from "./components/Company/Company/Navbar";
 import Login from "./components/Login/Login";
 import React, {useState, useEffect} from "react";
+import './App.css'
+
 
 function App() {
 
@@ -14,7 +16,7 @@ function App() {
   const [technicians, setTechnicians] = useState([])
   const [allCompanies, setAllCompanies] = useState([])
   const [user, setUser] = useState(null)
-  const [errors, setErrors] = useState([])
+  // const [yourJobTasks, setYourJobTasks] = useState([])
 
 
   //Auto Login
@@ -22,11 +24,17 @@ function App() {
     fetch('/auth')
     .then(res => {
       if(res.ok){
-        res.json().then(user => setUser(user))
-      } else {
-        res.json().then(json => setErrors(json.error))
+        res.json().then(user => {
+          updateUser(user)
+        })
       }
     })
+  }, [])
+
+  useEffect(() => {
+    fetch('/companies')
+    .then(res => res.json())
+    .then(data => setAllCompanies(data))
   }, [])
 
   useEffect(() => {
@@ -42,18 +50,27 @@ function App() {
   useEffect(() => {
     fetch('/job_tasks')
     .then(res => res.json())
-    .then(data => setAllJobs(data))
-  }, [])
-  useEffect(() => {
-    fetch('/companies')
-    .then(res => res.json())
-    .then(data => setAllCompanies(data))
+    .then((data) => setAllJobs(data))
   }, [])
 
-
+  function handleLogout(){
+    fetch('/logout', {
+      method: 'DELETE'
+    })
+    .then(setUser(false))
+  }
 
   const newJob = (newJob) => {
-    setAllJobs(allJobs => [...allJobs, newJob])
+    setAllJobs([...allJobs, newJob])
+  }
+
+  const deleteJob = (jobid) =>  {
+    var confirm = window.confirm("Are you sure you want to delete this?");
+    if (confirm) {
+      fetch(`/job_tasks/${jobid}`, {method: 'DELETE'})
+      .then(setAllJobs(allJobs.filter(eachJob => eachJob.id !== jobid)))
+      // .then(window.location.href = '/assignedjobs')
+    }
   }
 
   const newTechnician = (newTechnician) => {
@@ -62,33 +79,34 @@ function App() {
 
   const updateUser = (user) => setUser(user)
   
-  function newCompany(company) {
-    setAllCompanies([...allCompanies, company])
+  const newCompany = (newCompany) => {
+    setAllCompanies([...allCompanies, newCompany])
   }
 
+  const unassignedJobs = allJobs.filter(job => job.technician.first_name === 'NOT ASSIGNED')
 
-  if(!user) return <Login newCompany={newCompany} updateUser={updateUser}/>
+  if(!user) {return <Login newTechnician={newTechnician} newCompany={newCompany} updateUser={updateUser}/>} 
 
   return (
       <div className="App">
-        <Navbar />
+        <Navbar handleLogout={handleLogout}/>
         <Switch>
           <Route exact path="/technicians">
-            <AllTechnicians setTechnicians={setTechnicians} allCompanies={allCompanies} newTechnician={newTechnician} technicians={technicians}/>
+            <AllTechnicians user={user} setTechnicians={setTechnicians} allCompanies={allCompanies} newTechnician={newTechnician} technicians={technicians}/>
           </Route>
-          <Route exact path="/assignedjbos">
-            <AssignedJobs allJobs={allJobs}/>
+          <Route exact path="/assignedjobs">
+            <AssignedJobs user={user} technicians={technicians} deleteJob={deleteJob} allJobs={allJobs}/>
           </Route>
           <Route exact path="/unassignedjobs">
-            <UnassignedJobs />
+            <UnassignedJobs deleteJob={deleteJob} unassignedJobs={unassignedJobs}/>
           </Route>
           <Route exact path="/">
-            <Home newJob={newJob} technicians={technicians} allHomes={allHomes}/>
+            <Home user={user} newJob={newJob} technicians={technicians} allHomes={allHomes}/>
           </Route>
         </Switch>
       </div>
     
   );
 }
-
+// }
 export default App;

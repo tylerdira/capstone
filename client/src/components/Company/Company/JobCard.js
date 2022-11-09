@@ -1,13 +1,16 @@
-function JobCard({job}) {
+function JobCard({job, deleteJob}) {
 
     return (
-      <div>
-        {console.log(job)}
-        <p>{job.technician.first_name} {job.technician.last_name}</p>
-        <p>{job.home.address}</p>
+      <div className="job-card">
+        {/* <p>{job.technician.first_name} {job.technician.last_name}</p> */}
+        {/* <p>{job.home.address}</p> */}
         <p>{job.status}</p>
         <p>{job.description}</p>
-        <p>{job.completed}</p>
+        <p>{job.technician_id}</p>
+        <button onClick={(e) => {
+            e.stopPropagation();
+            deleteJob(job.id)
+            }}>Delete Job</button>
         </div>
     );
   }

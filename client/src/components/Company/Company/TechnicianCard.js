@@ -3,10 +3,10 @@ function TechnicianCard({tech, setTechnicians, technicians}) {
   function deleteTechnician(technicianid) {
     var confirm = window.confirm("Are you sure you want to delete this?");
     if (confirm)  {
-       fetch(`/technicians/${tech.id}`, {
+       fetch(`/technicians/${technicianid}`, {
         method: 'DELETE',
     })
-    setTechnicians(technicians.filter(aTechnician => aTechnician.id != tech.id))
+    setTechnicians(technicians.filter(aTechnician => aTechnician.id != technicianid))
     }
   }
 

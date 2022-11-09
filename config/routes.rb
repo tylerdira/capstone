@@ -7,4 +7,6 @@ Rails.application.routes.draw do
  
   post '/login', to: 'sessions#create'
   get '/auth', to: 'companies#show'
+  delete '/logout', to: 'sessions#destroy'
+  get '/myjobtasks', to: 'companies#myJobTasks'
 end

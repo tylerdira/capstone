@@ -8,13 +8,13 @@ class SessionsController < ApplicationController
             session[:company_id] = company.id
             render json: company, status: :created
         else
-            render json: {error: {login: "Invalid username or password"}}, status: :unauthorized
+            render json: {errors: "Invalid username or password"}, status: :unauthorized
         end
     end
 
   
-    # def destroy
-    #   session.delete :company_id
-    #   head :no_content
-    # end
+    def destroy
+      session.delete :company_id
+      head :no_content
+    end
 end
