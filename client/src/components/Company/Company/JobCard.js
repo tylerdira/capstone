@@ -1,7 +1,7 @@
 function JobCard({job, deleteJob}) {
 
     return (
-      <div className="job-card">
+      <div className="p-4 m-4 w-[300px]">
         {/* <p>{job.technician.first_name} {job.technician.last_name}</p> */}
         {/* <p>{job.home.address}</p> */}
         <p>{job.status}</p>

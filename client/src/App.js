@@ -6,7 +6,11 @@ import UnassignedJobs from "./components/Company/Company/UnassignedJobs";
 import Navbar from "./components/Company/Company/Navbar";
 import Login from "./components/Login/Login";
 import React, {useState, useEffect} from "react";
-import './App.css'
+import './App.css';
+// import './index.css';
+
+
+
 
 
 function App() {
@@ -88,7 +92,7 @@ function App() {
   if(!user) {return <Login newTechnician={newTechnician} newCompany={newCompany} updateUser={updateUser}/>} 
 
   return (
-      <div className="App">
+      <div className="bg-blue-400">
         <Navbar handleLogout={handleLogout}/>
         <Switch>
           <Route exact path="/technicians">

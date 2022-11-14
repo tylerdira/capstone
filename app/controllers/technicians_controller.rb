@@ -11,7 +11,7 @@ class TechniciansController < ApplicationController
     end
     
 
-    ##Not working?
+
     def create
         technician = Technician.create!(technician_params)
         render json: technician

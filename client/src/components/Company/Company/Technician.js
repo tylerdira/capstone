@@ -11,11 +11,11 @@ function Technician({tech, setTechnicians, technicians}) {
   }
 
     return (
-      <div>
-        <h3>{tech.first_name}</h3>
+      <div className="border p-4 m-4 w-[300px] border-black">
+        <h3 className="">{tech.first_name}</h3>
         <h5>{tech.profession}</h5>
-        <button>Assign to Job</button>
-        <button onClick={toggleMoreInfo}>More info</button>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Assign to Job</button>
+        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full' onClick={toggleMoreInfo}>More info</button>
         {moreInfo ? <TechnicianCard setTechnicians={setTechnicians} technicians={technicians} tech={tech}/> : null}
       </div>
     );

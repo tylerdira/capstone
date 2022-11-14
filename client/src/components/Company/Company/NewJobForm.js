@@ -51,7 +51,7 @@ function NewJobForm({allHomes, technicians, newJob, user}) {
   const yourTechnicians = technicians.filter(tech => tech.company.id === user.id)
 
     return (
-      <div>
+      <div  className="bg-blue-400">
         <h1>NewJobForm</h1>
         <form onSubmit={handleSubmit}>
             <label>Address</label>
