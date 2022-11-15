@@ -89,7 +89,7 @@ function App() {
     setAllCompanies([...allCompanies, newCompany])
   }
 
-  const unassignedJobs = allJobs.filter(job => job.technician.first_name === 'NOT ASSIGNED')
+  const unassignedJobs = allJobs.filter(job => job.technician.first_name === 'NOT')
 
   console.log(user)
 

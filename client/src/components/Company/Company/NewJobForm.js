@@ -62,7 +62,8 @@ function NewJobForm({allHomes, technicians, newJob, user}) {
             <label>Status</label>
               <select onChange={handleStatusChange}>
               <option selected></option>
-                  <option>Not Started</option>
+                  <option>Not Assigned</option>
+                  <option>Assigned, Not Started</option>
                   <option>En route</option>
                   <option>In Progress</option>
                   <option>Complete</option>
