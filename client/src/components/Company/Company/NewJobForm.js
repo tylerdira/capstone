@@ -52,7 +52,7 @@ function NewJobForm({allHomes, technicians, newJob, user}) {
 
     return (
       <div  className="bg-blue-400">
-        <h1>NewJobForm</h1>
+        <h1 className="py-10 text-center">New Job Form</h1>
         <form onSubmit={handleSubmit}>
             <label>Address</label>
                 <select onChange={handleAddressChange}>
@@ -74,7 +74,7 @@ function NewJobForm({allHomes, technicians, newJob, user}) {
                   <option selected></option>
                   {yourTechnicians.map(tech => <option key={tech.id} value={tech.id}>{tech.first_name} {tech.last_name}</option>)}
                 </select>
-            <button type="submit">Create Job</button>
+            <button className="text-white bg-gradient-to-br from-green-400 to-purple-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="submit">Create Job</button>
             
         </form>
         

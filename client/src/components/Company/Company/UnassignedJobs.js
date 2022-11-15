@@ -5,7 +5,7 @@ function UnassignedJobs({unassignedJobs, deleteJob}) {
 
     return (
       <div>
-        Unassigned Jobs
+        <p className="text-center">Unassigned Jobs</p>
         {unassignedJobs.map(job => <UnassignedJobCard deleteJob={deleteJob} key={job.id} job={job}/>)}
       </div>
     );

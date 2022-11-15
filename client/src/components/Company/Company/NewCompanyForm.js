@@ -30,34 +30,21 @@ function NewCompanyForm({newCompany, newTechnician}) {
         setEmail("");
         setPassword("");
       })
-    //   .then(
-    //     fetch('/technicians', {
-    //         method: 'POST',
-    //         headers: { "Content-type": "application/json"},
-    //         body: JSON.stringify({
-    //             name: 'NOT ASSIGNED',
-    //             company_id: numOfCompanies
-    //         })
-    //     })
-    //     .then(r => r.json())
-    //     .then(aNewTechnician => {
-    //         newTechnician(aNewTechnician)
-    //     })
-    //   )
+  
       }
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form className='px-4 my-32 max-w-3xl mx-auto space-y-3' onSubmit={handleSubmit}>
                 <label>Company Name</label>
-                    <input onChange={(e) => setName(e.target.value)} value={name}></input>
+                    <input className="block py-2 px-4 rounded focus:border-teal-500" onChange={(e) => setName(e.target.value)} value={name}></input>
                 <label>Company Phone Number</label>
-                    <input onChange={(e) => setPhoneNumber(e.target.value)} value={phoneNumber}></input>
+                    <input className="block py-2 px-4 rounded focus:border-teal-500" onChange={(e) => setPhoneNumber(e.target.value)} value={phoneNumber}></input>
                 <label>Email</label>
-                    <input onChange={(e) => setEmail(e.target.value)} value={email}></input>
+                    <input className="block py-2 px-4 rounded focus:border-teal-500" onChange={(e) => setEmail(e.target.value)} value={email}></input>
                 <label>Password</label>
-                    <input onChange={(e) => setPassword(e.target.value)} value={password}></input>
-                <button type='submit'>Sign Up!</button>
+                    <input className="block py-2 px-4 rounded focus:border-teal-500" onChange={(e) => setPassword(e.target.value)} value={password}></input>
+                <button className="text-white bg-gradient-to-br from-blue-400 to-green-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type='submit'>Sign Up!</button>
             </form>
         </div>
     );

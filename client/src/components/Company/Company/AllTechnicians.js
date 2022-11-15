@@ -14,7 +14,7 @@ function AllTechnicians({technicians, newTechnician, allCompanies, setTechnician
 
 
     return (
-      <div className="content-center">
+      <div>
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={formControl}>New Technician</button>
 
         {showForm ? <NewTechnicianForm user={user} allCompanies={allCompanies} newTechnician={newTechnician} /> : null}

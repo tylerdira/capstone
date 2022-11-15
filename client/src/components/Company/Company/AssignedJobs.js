@@ -13,17 +13,10 @@ function AssignedJobs({allJobs, deleteJob, technicians, user}) {
     .then(data => setYourJobTasks(data.jobs))
   }, [])
 
-  // function getMyJobs(e) {
-  //   e.preventDefault();
-  //   fetch(`/companies/:${user.id}`)
-  //    .then(res => res.json())
-  //    .then(data => setYourJobTasks(data.jobs))
-  //    console.log(yourJobTasks)
-  // }
 
     return (
       <div>
-        <h2>Assigned Jobs</h2>
+        <h2 className="text-center">Assigned Jobs</h2>
         <div>
           {yourJobTasks.map((job) => <JobCard deleteJob={deleteJob} job={job}/>) }
         </div>

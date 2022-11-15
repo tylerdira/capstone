@@ -91,8 +91,10 @@ function App() {
 
   if(!user) {return <Login newTechnician={newTechnician} newCompany={newCompany} updateUser={updateUser}/>} 
 
+  // console.log(user)
+
   return (
-      <div className="bg-blue-400">
+      <div className="h-screen bg-blue-400">
         <Navbar handleLogout={handleLogout}/>
         <Switch>
           <Route exact path="/technicians">
@@ -109,8 +111,10 @@ function App() {
           </Route>
         </Switch>
       </div>
-    
+      
   );
+
+
 }
-// }
+
 export default App;

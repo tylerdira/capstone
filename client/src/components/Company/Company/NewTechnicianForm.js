@@ -39,19 +39,19 @@ function NewTechnicianForm({newTechnician, allCompanies, user}) {
 
     return (
       <div>
-        New Technician Form
-        <form onSubmit={handleSubmit}>
+        <h3 className="text-center ">New Technician Form</h3>
+        <form className='px-4 my-32 max-w-xl mx-auto space-y-3' onSubmit={handleSubmit}>
           <label>First Name</label>
-            <input onChange={e => setFirstName(e.target.value)} value={firstName}/>
+            <input className="block py-2 px-4 rounded focus:border-teal-500" onChange={e => setFirstName(e.target.value)} value={firstName}/>
           <label>Last Name</label>
-            <input onChange={e => setLastName(e.target.value)} value={lastName}/>
+            <input className="block py-2 px-4 rounded focus:border-teal-500" onChange={e => setLastName(e.target.value)} value={lastName}/>
           <label>Email</label>
-            <input onChange={e => setEmail(e.target.value)} value={email}/>
+            <input className="block py-2 px-4 rounded focus:border-teal-500" onChange={e => setEmail(e.target.value)} value={email}/>
           <label>Password</label>
-            <input onChange={e => setPassword(e.target.value)} value={password}/>
+            <input className="block py-2 px-4 rounded focus:border-teal-500" onChange={e => setPassword(e.target.value)} value={password}/>
           <label>Profession</label>
-            <input onChange={e => setProfession(e.target.value)} value={profession}/>
-          <button type='submit'>Create Technician</button>
+            <input className="block py-2 px-4 rounded focus:border-teal-500" onChange={e => setProfession(e.target.value)} value={profession}/>
+          <button className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"  type='submit'>Create Technician</button>
         </form>
       </div>
     );
