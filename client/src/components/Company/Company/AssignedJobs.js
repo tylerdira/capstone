@@ -2,7 +2,7 @@ import JobCard from "./JobCard";
 import React, {useState, useEffect} from "react";
 
 
-function AssignedJobs({allJobs, deleteJob, technicians, user}) {
+function AssignedJobs({allJobs, deleteJob, technicians, user, sendEmail}) {
 
   const [yourJobTasks, setYourJobTasks] = useState([])
 
@@ -15,10 +15,10 @@ function AssignedJobs({allJobs, deleteJob, technicians, user}) {
 
 
     return (
-      <div>
+      <div className="h-screen bg-blue-400">
         <h2 className="text-center">Assigned Jobs</h2>
         <div>
-          {yourJobTasks.map((job) => <JobCard deleteJob={deleteJob} job={job}/>) }
+          {yourJobTasks.map((job) => <JobCard sendEmail={sendEmail} deleteJob={deleteJob} job={job}/>) }
         </div>
       </div>
     );

@@ -1,3 +1,4 @@
+import './App.css';
 import { Switch, Route } from "react-router-dom";
 import Home from "./components/Company/Company/Home";
 import AllTechnicians from "./components/Company/Company/AllTechnicians";
@@ -6,8 +7,8 @@ import UnassignedJobs from "./components/Company/Company/UnassignedJobs";
 import Navbar from "./components/Company/Company/Navbar";
 import Login from "./components/Login/Login";
 import React, {useState, useEffect} from "react";
-import './App.css';
-// import './index.css';
+import emailjs from '@emailjs/browser';
+
 
 
 
@@ -20,10 +21,11 @@ function App() {
   const [technicians, setTechnicians] = useState([])
   const [allCompanies, setAllCompanies] = useState([])
   const [user, setUser] = useState(null)
-  // const [yourJobTasks, setYourJobTasks] = useState([])
 
 
-  //Auto Login
+
+
+
   useEffect(() => {
     fetch('/auth')
     .then(res => {
@@ -89,9 +91,31 @@ function App() {
 
   const unassignedJobs = allJobs.filter(job => job.technician.first_name === 'NOT ASSIGNED')
 
+  console.log(user)
+
+  const publicKey = 'XFRJeFRsbvg8_hWJe'
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    var templateParams = {
+      from_name: user.name,
+      message: 'See you soon!'
+    };
+
+    emailjs.send('service_pn0fxum', 'template_tgom40b', templateParams, publicKey)
+      .then(function(response) {
+        window.alert('Message sent', response.status, response.text);
+      }, function(error) {
+        window.alert('FAILED',error);
+      });
+
+  
+  }
+
+
   if(!user) {return <Login newTechnician={newTechnician} newCompany={newCompany} updateUser={updateUser}/>} 
 
-  // console.log(user)
+
 
   return (
       <div className="h-screen bg-blue-400">
@@ -101,7 +125,7 @@ function App() {
             <AllTechnicians user={user} setTechnicians={setTechnicians} allCompanies={allCompanies} newTechnician={newTechnician} technicians={technicians}/>
           </Route>
           <Route exact path="/assignedjobs">
-            <AssignedJobs user={user} technicians={technicians} deleteJob={deleteJob} allJobs={allJobs}/>
+            <AssignedJobs sendEmail={sendEmail} user={user} technicians={technicians} deleteJob={deleteJob} allJobs={allJobs}/>
           </Route>
           <Route exact path="/unassignedjobs">
             <UnassignedJobs deleteJob={deleteJob} unassignedJobs={unassignedJobs}/>

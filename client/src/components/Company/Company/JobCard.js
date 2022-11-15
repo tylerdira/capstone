@@ -1,4 +1,4 @@
-function JobCard({job, deleteJob}) {
+function JobCard({job, deleteJob, sendEmail}) {
 
     return (
       <div className="p-4 m-4 w-[300px] border border-black bg-blue-500">
@@ -11,7 +11,10 @@ function JobCard({job, deleteJob}) {
             e.stopPropagation();
             deleteJob(job.id)
             }}>Delete Job</button>
-        </div>
+        <button className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full"
+                 onClick={(e) => sendEmail(e)}>Notify</button>
+        
+      </div>
     );
   }
   

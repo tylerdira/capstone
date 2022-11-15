@@ -14,7 +14,7 @@ class TechniciansController < ApplicationController
 
     def create
         technician = Technician.create!(technician_params)
-        render json: technician
+        render json: technician, status: :created 
     end
 
     def destroy

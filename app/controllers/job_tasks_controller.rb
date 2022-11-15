@@ -22,10 +22,6 @@ class JobTasksController < ApplicationController
         head :no_content
     end
 
-    # def myJobs
-    #     allJobs = JobTask.all
-    #     myJobs = JobTask.find()
-    # end
 
     private 
 

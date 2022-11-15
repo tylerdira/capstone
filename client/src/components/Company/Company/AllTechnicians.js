@@ -21,7 +21,7 @@ function AllTechnicians({technicians, newTechnician, allCompanies, setTechnician
 
       
 
-      {yourTechnicians.map(tech => <Technician technicians={technicians} setTechnicians={setTechnicians} key={tech.id} tech={tech}/>)}
+      {yourTechnicians.map(tech => <Technician className="bg-black" technicians={technicians} setTechnicians={setTechnicians} key={tech.id} tech={tech}/>)}
 
       
 

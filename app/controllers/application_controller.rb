@@ -17,15 +17,10 @@ class ApplicationController < ActionController::API
         render json: {errors: exception.record.errors.full_messages}, status: :unprocessable_entity
     end
 
+
     def authorized
         @current_user = Company.find_by(id: session[:company_id])
         render json: {errors: ["Not authorized"]}, status: :unauthorized unless @current_user
-        
-        # return render json:{error: "Not authorized"}, status: :unauthorized unless session.include? :company_id
     end
 
-    # def authorize
-    #     @current_company = Company.find_by(company_id: session[:company_id])
-    #     render json: {errors: ["Not authorized"]}, status: :unauthorized unless @current_company
-    #   end
 end

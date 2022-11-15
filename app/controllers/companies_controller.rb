@@ -16,9 +16,7 @@ class CompaniesController < ApplicationController
     end
 
     def myJobTasks
-        # company = Company.find(params [:company_id])
         myTechnicians = Technician.where(company_id: 1)
-        # session[:company_id]
         myJobs = JobTask.where(Technician.where(company_id: 1))
         render json: myJobs
     end
