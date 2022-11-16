@@ -58,7 +58,7 @@ function NewTechnicianForm({newTechnician, allCompanies, user}) {
           <label>Phone Number</label>
             <input className="block py-2 px-4 rounded focus:border-teal-500" onChange={e => setPhoneNumber(e.target.value)} value={phoneNumber}/>
           <label>Password</label>
-            <input className="block py-2 px-4 rounded focus:border-teal-500" onChange={e => setPassword(e.target.value)} value={password}/>
+            <input type='password' className="block py-2 px-4 rounded focus:border-teal-500" onChange={e => setPassword(e.target.value)} value={password}/>
           <label>Profession</label>
             <input className="block py-2 px-4 rounded focus:border-teal-500" onChange={e => setProfession(e.target.value)} value={profession}/>
           <button className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"  type='submit'>Create Technician</button>

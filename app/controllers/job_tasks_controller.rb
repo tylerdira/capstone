@@ -32,6 +32,6 @@ class JobTasksController < ApplicationController
     private 
 
     def jobtask_params
-        params.permit(:technician_id, :home_id, :status, :description)
+        params.permit(:technician_id, :home_id, :status, :description, :completed)
     end
 end

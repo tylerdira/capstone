@@ -15,7 +15,7 @@ function AssignedJobs({allJobs, deleteJob, technicians, user, sendEmail}) {
 
 
 
-  const yourAssignedJobTasks = yourJobTasks.filter(task => task.status != "Not Assigned")
+  const yourAssignedJobTasks = yourJobTasks.filter(task => task.status !== "Not Assigned")
 
     return (
       <div className="h-screen bg-blue-400">

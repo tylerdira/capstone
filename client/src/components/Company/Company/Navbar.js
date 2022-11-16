@@ -9,16 +9,16 @@ function Navbar({handleLogout}) {
         <div className='border-4 border-indigo-200 border-b-indigo-500'>
           <div className='flex justify-between'>
             <NavLink to="/" exact > 
-              <p className="py-5 px-10 border ">Home</p>
+              <p className="py-5 px-10 border border-black" >Home</p>
             </NavLink>
             <NavLink to="/technicians" exact >
-              <p className="py-5 px-10 border ">Technicians </p>
+              <p className="py-5 px-10 border border-black">Technicians </p>
             </NavLink>
             <NavLink to="/assignedjobs" exact > 
-              <p className="py-5 px-10 border ">Assigned Jobs </p>
+              <p className="py-5 px-10 border border-black">Assigned Jobs </p>
             </NavLink>
             <NavLink to="/unassignedjobs" exact > 
-              <p className="py-5 px-10 border "> Unassigned Jobs</p>
+              <p className="py-5 px-10 border border-black"> Unassigned Jobs</p>
             </NavLink>
             <div>
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={handleLogout}> Log out</button>

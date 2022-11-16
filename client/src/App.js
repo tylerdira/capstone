@@ -71,6 +71,7 @@ function App() {
     if (confirm) {
       fetch(`/job_tasks/${jobid}`, {method: 'DELETE'})
       .then(setAllJobs(allJobs.filter(eachJob => eachJob.id !== jobid)))
+      window.location.reload()
     }
   }
 
@@ -85,6 +86,7 @@ function App() {
   }
 
   const unassignedJobs = allJobs.filter(job => job.technician.first_name === 'NOT')
+
 
 
   const publicKey = 'XFRJeFRsbvg8_hWJe'

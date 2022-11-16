@@ -10,6 +10,7 @@ function NewJobForm({allHomes, technicians, newJob, user}) {
   const [completed, setCompleted] = useState(false);
 
 
+
   function handleAddressChange(e) {
     e.preventDefault();
     setAddress(e.target.value)
@@ -26,9 +27,7 @@ function NewJobForm({allHomes, technicians, newJob, user}) {
     e.preventDefault();
     fetch('/job_tasks', {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: {"Content-Type": "application/json"},
       body: JSON.stringify({
         status,
         description,
@@ -55,10 +54,10 @@ function NewJobForm({allHomes, technicians, newJob, user}) {
         <h1 className="py-10 text-center">New Job Form</h1>
         <form className='content-center px-20 my-32 max-w-3xl mx-auto space-y-10' onSubmit={handleSubmit}>
             <label className="block">Address</label>
-                <select className="py-2 px-4 rounded focus:border-teal-500" onChange={handleAddressChange}>
-                  <option selected></option>
-                  {allHomes.map(home => <option key={home.id} value={home.id}>{home.address}</option>)}
-                </select>
+              <select className="py-2 px-4 rounded focus:border-teal-500" onChange={handleAddressChange}>
+                <option selected></option>
+                {allHomes.map(home => <option key={home.id} value={home.id}>{home.address}</option>)}
+              </select>
             <label className="block">Status</label>
               <select className="block py-2 px-4 rounded focus:border-teal-500" onChange={handleStatusChange}>
               <option selected></option>
@@ -69,7 +68,9 @@ function NewJobForm({allHomes, technicians, newJob, user}) {
                   <option>Complete</option>
               </select>
             <label className="block">Description</label>
-                <input className=" py-2 px-4 rounded focus:border-teal-500" onChange={e => setDescription(e.target.value)} value={description}/>
+                <input className="form-control
+                      block w-full px-3 py-1.5 text-base
+                      bg-white bg-clip-padding border border-solid border-gray-300 rounded m-0  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" onChange={e => setDescription(e.target.value)} value={description}/>
             <label className="block">Technician</label>
                 <select className="block py-2 px-4 rounded focus:border-teal-500" onChange={handleTechnicianChange}>
                   <option selected></option>

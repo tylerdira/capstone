@@ -1,5 +1,4 @@
-import Home from "./Home";
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 
 function UnassignedJobCard({job, deleteJob, technicians, user, updateJob}) {
 
@@ -23,8 +22,7 @@ function UnassignedJobCard({job, deleteJob, technicians, user, updateJob}) {
 
   const yourTechnicians = technicians.filter(tech => tech.company.id === user.id)
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     fetch(`/job_tasks/${job.id}`, {
       method: 'PATCH',
       headers: {"Content-Type" : "application/json"},
@@ -46,14 +44,14 @@ function UnassignedJobCard({job, deleteJob, technicians, user, updateJob}) {
         }}>Delete Job</button>
         <button className="focus:outline-none text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onClick={handleClick}>Assign</button>
         {showForm ? 
-          <form className="block">
+          <form onSubmit={handleSubmit} className="block">
             <label className="block">Technician</label>
             <select onChange={(e) => handleTechnicianChange(e)}>
                   <option selected></option>
                   {yourTechnicians.map(tech => <option key={tech.id} value={tech.id}>{tech.first_name} {tech.last_name}</option>)}
             </select>
             <label className="block">Status</label>
-              <select onChange={(e) => handleStatusChange(e)}>
+              <select onChange={handleStatusChange}>
               <option selected></option>
                   <option>Not Assigned</option>
                   <option>Assigned, Not Started</option>
@@ -61,7 +59,7 @@ function UnassignedJobCard({job, deleteJob, technicians, user, updateJob}) {
                   <option>In Progress</option>
                   <option>Complete</option>
               </select>
-            <button className="block focus:outline-none text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onSubmit={handleSubmit} type="submit"> Update </button>
+            <button className="block focus:outline-none text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"  type="submit"> Update </button>
 
           </form>
            : null}

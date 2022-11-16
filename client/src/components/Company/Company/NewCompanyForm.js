@@ -29,6 +29,7 @@ function NewCompanyForm({newCompany, newTechnician}) {
         setPhoneNumber("");
         setEmail("");
         setPassword("");
+        window.alert('Account created!');
       })
   
       }
@@ -43,7 +44,7 @@ function NewCompanyForm({newCompany, newTechnician}) {
                 <label>Email</label>
                     <input className="block py-2 px-4 rounded focus:border-teal-500" onChange={(e) => setEmail(e.target.value)} value={email}></input>
                 <label>Password</label>
-                    <input className="block py-2 px-4 rounded focus:border-teal-500" onChange={(e) => setPassword(e.target.value)} value={password}></input>
+                    <input type='password' className="block py-2 px-4 rounded focus:border-teal-500" onChange={(e) => setPassword(e.target.value)} value={password}></input>
                 <button className="text-white bg-gradient-to-br from-blue-400 to-green-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type='submit'>Sign Up!</button>
             </form>
         </div>

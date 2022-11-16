@@ -1,4 +1,3 @@
-import JobCard from "./JobCard";
 import UnassignedJobCard from "./UnassignedJobCard";
 import React, {useState, useEffect} from "react";
 
@@ -15,7 +14,7 @@ function UnassignedJobs({unassignedJobs, deleteJob, user, technicians, updateJob
 
   const yourUnassignedJobTasks = yourJobTasks.filter(task => task.status === "Not Assigned")
 
-  {console.log(yourUnassignedJobTasks)}
+
 
     return (
       <div>
