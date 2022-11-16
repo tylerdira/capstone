@@ -9,6 +9,12 @@ class JobTasksController < ApplicationController
         jobtask = JobTask.find(params[:id])
         render json: jobtask
     end
+
+    def update
+        jobtask = JobTask.find(params[:id])
+        jobtask.update(jobtask_params)
+        render json: jobtask
+    end
     
 
     def create

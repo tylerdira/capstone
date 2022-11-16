@@ -9,11 +9,6 @@ import Login from "./components/Login/Login";
 import React, {useState, useEffect} from "react";
 import emailjs from '@emailjs/browser';
 
-
-
-
-
-
 function App() {
 
   const [allJobs, setAllJobs] = useState([])
@@ -21,10 +16,6 @@ function App() {
   const [technicians, setTechnicians] = useState([])
   const [allCompanies, setAllCompanies] = useState([])
   const [user, setUser] = useState(null)
-
-
-
-
 
   useEffect(() => {
     fetch('/auth')
@@ -70,12 +61,16 @@ function App() {
     setAllJobs([...allJobs, newJob])
   }
 
+  const updateJob = (job) => {
+    setAllJobs(allJobs.filter(eachJob => eachJob.id !== job.id))
+    setAllJobs([...allJobs, job])
+  }
+
   const deleteJob = (jobid) =>  {
     var confirm = window.confirm("Are you sure you want to delete this?");
     if (confirm) {
       fetch(`/job_tasks/${jobid}`, {method: 'DELETE'})
       .then(setAllJobs(allJobs.filter(eachJob => eachJob.id !== jobid)))
-      // .then(window.location.href = '/assignedjobs')
     }
   }
 
@@ -91,7 +86,6 @@ function App() {
 
   const unassignedJobs = allJobs.filter(job => job.technician.first_name === 'NOT')
 
-  console.log(user)
 
   const publicKey = 'XFRJeFRsbvg8_hWJe'
 
@@ -118,7 +112,7 @@ function App() {
 
 
   return (
-      <div className="h-screen bg-blue-400">
+      <div className="h-screen bg-blue-400 font-sans">
         <Navbar handleLogout={handleLogout}/>
         <Switch>
           <Route exact path="/technicians">
@@ -128,7 +122,7 @@ function App() {
             <AssignedJobs sendEmail={sendEmail} user={user} technicians={technicians} deleteJob={deleteJob} allJobs={allJobs}/>
           </Route>
           <Route exact path="/unassignedjobs">
-            <UnassignedJobs deleteJob={deleteJob} unassignedJobs={unassignedJobs}/>
+            <UnassignedJobs updateJob={updateJob} user={user} deleteJob={deleteJob} technicians={technicians} unassignedJobs={unassignedJobs}/>
           </Route>
           <Route exact path="/">
             <Home user={user} newJob={newJob} technicians={technicians} allHomes={allHomes}/>

@@ -9,7 +9,7 @@ function Login({updateUser, newCompany, newTechnician}) {
         email:'',
         password:''
     })
-    const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState(false)
     const history = useHistory()
 
     const {email, password} = formData
@@ -33,7 +33,6 @@ function Login({updateUser, newCompany, newTechnician}) {
                   })
               }else {
                   res.json().then(json => setErrors(json.errors))
-                //   {console.log(errors)}
               }
           })
     }

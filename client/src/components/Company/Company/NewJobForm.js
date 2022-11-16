@@ -51,16 +51,16 @@ function NewJobForm({allHomes, technicians, newJob, user}) {
   const yourTechnicians = technicians.filter(tech => tech.company.id === user.id)
 
     return (
-      <div  className="bg-blue-400">
+      <div  className="bg-blue-400 block">
         <h1 className="py-10 text-center">New Job Form</h1>
-        <form onSubmit={handleSubmit}>
-            <label>Address</label>
-                <select onChange={handleAddressChange}>
+        <form className='content-center px-20 my-32 max-w-3xl mx-auto space-y-10' onSubmit={handleSubmit}>
+            <label className="block">Address</label>
+                <select className="py-2 px-4 rounded focus:border-teal-500" onChange={handleAddressChange}>
                   <option selected></option>
                   {allHomes.map(home => <option key={home.id} value={home.id}>{home.address}</option>)}
                 </select>
-            <label>Status</label>
-              <select onChange={handleStatusChange}>
+            <label className="block">Status</label>
+              <select className="block py-2 px-4 rounded focus:border-teal-500" onChange={handleStatusChange}>
               <option selected></option>
                   <option>Not Assigned</option>
                   <option>Assigned, Not Started</option>
@@ -68,10 +68,10 @@ function NewJobForm({allHomes, technicians, newJob, user}) {
                   <option>In Progress</option>
                   <option>Complete</option>
               </select>
-            <label>Description</label>
-                <input onChange={e => setDescription(e.target.value)} value={description}/>
-            <label>Technician</label>
-                <select onChange={handleTechnicianChange}>
+            <label className="block">Description</label>
+                <input className=" py-2 px-4 rounded focus:border-teal-500" onChange={e => setDescription(e.target.value)} value={description}/>
+            <label className="block">Technician</label>
+                <select className="block py-2 px-4 rounded focus:border-teal-500" onChange={handleTechnicianChange}>
                   <option selected></option>
                   {yourTechnicians.map(tech => <option key={tech.id} value={tech.id}>{tech.first_name} {tech.last_name}</option>)}
                 </select>

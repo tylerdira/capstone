@@ -44,7 +44,7 @@ function NewTechnicianForm({newTechnician, allCompanies, user}) {
   })
 }
   
-console.log(errors)
+
     return (
       <div className="h-screen bg-blue-400">
         <h3 className="text-center ">New Technician Form</h3>
